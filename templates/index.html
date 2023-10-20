@@ -1,0 +1,37 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+ <!-- Link to your CSS file -->
+    <title>Movie Recommender</title>
+</head>
+<body>
+    <header>
+        <h1>Movie Recommender</h1>
+    </header>
+    <div class="container">
+        <form action="/" method="POST">
+            <label for="genre">Select a movie genre:</label>
+            <select id="genre" name="genre">
+                <option value="Action">Action</option>
+                <option value="Animation">Animation</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <!-- Add more genre options here -->
+            </select>
+            <button type="submit">Get Recommendations</button>
+        </form>
+        {% if recommendations %}
+        <h2>Recommended Movies:</h2>
+        <ul>
+            {% for movie in recommendations %}
+            <li>{{ movie }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
